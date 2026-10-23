@@ -43,7 +43,14 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-
+int _write(int file, char *ptr, int len)
+{
+    (void)file;
+    for (int i = 0; i < len; i++) {
+        ITM_SendChar((uint32_t)*ptr++);
+    }
+    return len;
+}
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -101,8 +108,7 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  ethernetif_input(&gnetif);
-	  sys_check_timeouts();
+	  MX_LWIP_Process();
   }
   /* USER CODE END 3 */
 }
