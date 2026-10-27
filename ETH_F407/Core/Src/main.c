@@ -23,6 +23,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "myUDP.h"
+#include "myTCPIP.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -67,13 +68,13 @@ static void MX_TIM6_Init(void);
 /* USER CODE BEGIN 0 */
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
-	if(htim->Instance == TIM6){
-			Tick++;
-			if(Tick == 1000){
-			    udpClient_send();
-			    Tick = 0;
-			}
-	}
+//	if(htim->Instance == TIM6){
+//			Tick++;
+//			if(Tick == 1000){
+//			    udpClient_send();
+//			    Tick = 0;
+//			}
+//	}
 }
 /* USER CODE END 0 */
 
@@ -109,8 +110,8 @@ int main(void)
   MX_LWIP_Init();
   MX_TIM6_Init();
   /* USER CODE BEGIN 2 */
-  udpClient_connect();
-  HAL_TIM_Base_Start_IT(&htim6);
+  tcp_server_init();
+  // HAL_TIM_Base_Start_IT(&htim6);
   /* USER CODE END 2 */
 
   /* Infinite loop */
