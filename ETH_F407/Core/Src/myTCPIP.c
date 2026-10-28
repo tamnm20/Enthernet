@@ -15,8 +15,8 @@ static err_t tcp_server_poll(void *arg, struct tcp_pcb *tpcb);
 static err_t tcp_server_sent(void *arg, struct tcp_pcb *tpcb, u16_t len);
 static void tcp_server_send(struct tcp_pcb *tpcb, struct tcp_server_struct *es);
 static void tcp_server_connection_close(struct tcp_pcb *tpcb, struct tcp_server_struct *es);
-
 static void tcp_server_handle (struct tcp_pcb *tpcb, struct tcp_server_struct *es);
+
 
 /* Impementation for the TCP Server
    1. Create TCP Block.

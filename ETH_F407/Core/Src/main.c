@@ -23,7 +23,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "myUDP.h"
-#include "myTCPIP.h"
+#include "myTCPclient.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -66,8 +66,8 @@ static void MX_TIM6_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
-{
+//void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+//{
 //	if(htim->Instance == TIM6){
 //			Tick++;
 //			if(Tick == 1000){
@@ -75,7 +75,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 //			    Tick = 0;
 //			}
 //	}
-}
+//}
 /* USER CODE END 0 */
 
 /**
@@ -102,7 +102,7 @@ int main(void)
   SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
-
+  	  HAL_Delay(3000);
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
@@ -110,8 +110,8 @@ int main(void)
   MX_LWIP_Init();
   MX_TIM6_Init();
   /* USER CODE BEGIN 2 */
-  tcp_server_init();
-  // HAL_TIM_Base_Start_IT(&htim6);
+  tcp_client_init();
+  HAL_TIM_Base_Start_IT(&htim6);
   /* USER CODE END 2 */
 
   /* Infinite loop */
